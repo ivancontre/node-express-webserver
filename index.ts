@@ -1,18 +1,22 @@
 import express, { Application } from 'express';
+import hbs from 'hbs';
 import 'dotenv/config';
 
 // Crear el server de express
 const app: Application = express();
 
+// Handlebars
+app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials')
+
 // Directorio público
 app.use(express.static('public'));
 
-app.get('/generic', (req, res) => {
-    res.sendFile(__dirname + '/public/generic.html');
-});
-
-app.get('/elements', (req, res) => {
-    res.sendFile(__dirname + '/public/elements.html');
+app.get('/', (req, res) => {
+    res.render('home', {
+        name: 'Iván Contreras',
+        title: 'Curso de NodeJS'
+    });
 });
 
 app.get('*', (req, res) => {
