@@ -19,10 +19,24 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('*', (req, res) => {
-    //res.sendFile(__dirname + '/public/404.html');
-    res.sendFile('public/404.html', {root: __dirname })
+app.get('/generic', (req, res) => {
+    res.render('generic', {
+        name: 'Iván Contreras',
+        title: 'Curso de NodeJS'
+    });
 });
+
+app.get('/elements', (req, res) => {
+    res.render('elements', {
+        name: 'Iván Contreras',
+        title: 'Curso de NodeJS'
+    });
+});
+
+// app.get('*', (req, res) => {
+//     //res.sendFile(__dirname + '/public/404.html');
+//     res.sendFile('public/404.html', {root: __dirname })
+// });
 
 app.listen(process.env.PORT, () => {
     console.log(`Servidor corriendo en puerto ${ process.env.PORT }`);
