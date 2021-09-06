@@ -7,7 +7,6 @@ const app: Application = express();
 
 // Handlebars
 app.set('view engine', 'hbs');
-console.log(__dirname)
 hbs.registerPartials(__dirname + '/views/partials')
 
 // Directorio público
